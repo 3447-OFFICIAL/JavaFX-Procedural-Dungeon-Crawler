@@ -1,94 +1,113 @@
 # 🗡️ JavaFX Procedural Dungeon Crawler
 
-> **A scalable, AI-driven roguelike engine built with Java & JavaFX**  
-> Procedurally generated worlds, adaptive difficulty, and infinite replayability.
+**A scalable, AI-driven roguelike engine built with Java & JavaFX**  
+Delivering procedural environments, adaptive intelligence, and infinite replayability.
 
 ---
 
-## 🚀 Overview
+## 🚀 Executive Overview
 
-This project is a **2D top-down roguelike dungeon crawler** engineered using modern Java and JavaFX. It demonstrates advanced concepts such as **procedural content generation, adaptive AI systems, and modular game architecture**.
+This project represents a **2D top-down roguelike dungeon crawler engine** engineered using modern Java and JavaFX. It is architected as a **foundational game engine**, not just a standalone game—enabling extensibility, scalability, and rapid feature iteration.
 
-The system is designed not just as a game, but as a **reusable game engine foundation** for future expansions.
+The implementation showcases **advanced algorithmic design, AI-driven systems, and modular software engineering principles** aligned with real-world game development practices.
 
 ---
 
-## 🌟 Key Features
+## 🌟 Strategic Feature Set
 
-### 🧊 Procedural World Generation
-- Infinite dungeon floors generated using a **room-and-corridor algorithm**
-- Each run delivers a **unique playable layout**
-- Increasing structural complexity with depth (smaller rooms, denser paths)
+### 🧊 Procedural World Generation Engine
+- Infinite dungeon layers generated via **room-and-corridor procedural algorithms**
+- Each session produces a **non-repetitive, dynamically structured map**
+- Progressive complexity scaling:
+  - Compact room distribution
+  - Increased corridor density
 
-### 🤖 AI Director System
-- Dynamic difficulty adjustment based on player progression
-- Real-time balancing of:
-  - Enemy strength
-  - Map density
-- Ensures **optimal engagement curve**
+---
 
-### ⚔️ Combat & RPG Mechanics
-- Grid-based melee combat system
-- Enemy scaling:
-  - +15 HP / level
-  - +3 Damage / level
-- Player progression:
-  - +10 Max HP / floor
-  - +2 Attack Power / floor
-- Full HP restoration on level transition
+### 🤖 AI Director (Adaptive Difficulty Engine)
+- Real-time difficulty orchestration based on player performance metrics
+- Dynamically adjusts:
+  - Enemy attributes (HP, damage)
+  - Dungeon density and challenge level
+- Ensures **balanced engagement and retention curve**
 
-### 📊 Real-time HUD System
-- Live tracking of:
-  - Player HP
-  - Attack Power
+---
+
+### ⚔️ Combat & RPG Progression System
+- Grid-based deterministic combat model
+- Enemy scaling logic:
+  - +15 HP per level
+  - +3 Damage per level
+- Player progression model:
+  - +10 Max HP per floor
+  - +2 Attack Power per floor
+- Automatic HP regeneration on level transition
+
+---
+
+### 📊 Real-Time HUD & Telemetry
+- Live in-game metrics visualization:
+  - Player health
+  - Attack power
   - Remaining enemies
-- Visual depth indicator (LEVEL system)
+- Depth-based progression indicator (**LEVEL system**)
 
 ---
 
-## 🧠 Concepts & Technologies
+## 🧠 Core Concepts & Engineering Domains
 
-### 🎮 Core Game Development
-- Game Loop (JavaFX `AnimationTimer`)
-- Real-time rendering pipeline
-- Event-driven input handling
+### 🎮 Game Development Architecture
+- Game loop implementation using JavaFX `AnimationTimer`
+- Real-time rendering via **Canvas pipeline**
+- Event-driven input handling system
 
-### 🎲 Algorithms & Logic
-- Procedural generation (randomized + constrained)
+---
+
+### 🎲 Algorithms & System Logic
+- Procedural generation (randomized + constraint-based models)
 - Grid-based collision detection
-- State management (Game Over, Restart, Active Play)
+- Finite state management:
+  - Active Play
+  - Game Over
+  - Restart lifecycle
+
+---
 
 ### 🤖 AI & Scaling Systems
-- Adaptive difficulty model (AI Director)
-- Progressive enemy stat scaling
-- Player growth balancing
+- Adaptive AI Director framework
+- Progressive enemy scaling algorithms
+- Player difficulty balancing mechanics
 
-### 🧩 Software Engineering
+---
+
+### 🧩 Software Engineering Practices
 - Object-Oriented Programming (OOP)
-- Modular architecture (separation of concerns)
-- Extensible system design for future features
+- Modular architecture (high cohesion, low coupling)
+- Scalable and extensible codebase design
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-| Layer        | Technology        |
-|--------------|------------------|
+| Layer        | Technology                          |
+|--------------|----------------------------------|
 | Language     | Java 17+ (Optimized for Java 26) |
-| Framework    | JavaFX (Canvas Rendering) |
-| Architecture | Modular OOP + Game Loop Pattern |
+| Framework    | JavaFX (Canvas Rendering Engine) |
+| Architecture | Modular OOP + Game Loop Pattern  |
 
 ---
 
-## 📂 Project Structure
-src/
-├── engine/ # Core game loop & state management
-├── entities/ # Player, Enemy, base classes
-├── world/ # Dungeon generation logic
-├── ui/ # HUD and rendering
-├── input/ # Keyboard handling
-└── main/ # Entry point
+## 📂 Project Architecture
 
+```bash
+src/
+├── engine/     # Core game loop & state orchestration
+├── entities/   # Player, Enemy, base entity models
+├── world/      # Procedural dungeon generation logic
+├── ui/         # HUD, rendering, and overlays
+├── input/      # Keyboard and interaction handling
+└── main/       # Application entry point
+```
 ---
 
 ## 🚀 Getting Started
@@ -107,7 +126,7 @@ If you are on Windows, simply run:
 ```powershell
 .\run.bat
 ```
-*(Make sure the paths in `run.bat` match your local JDK and JavaFX installation.)*
+Make sure the paths in `run.bat` match your local JDK and JavaFX installation.
 
 ---
 
