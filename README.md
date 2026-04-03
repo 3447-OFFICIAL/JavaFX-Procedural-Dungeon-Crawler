@@ -1,31 +1,93 @@
 # 🗡️ JavaFX Procedural Dungeon Crawler
 
-A 2D top-down procedurally generated roguelike game built with **Java 26** and **JavaFX**. Character growth, an AI-driven "Director" difficulty system, and infinite dungeon crawling.
+> **A scalable, AI-driven roguelike engine built with Java & JavaFX**  
+> Procedurally generated worlds, adaptive difficulty, and infinite replayability.
 
 ---
 
-## 🌟 Features
+## 🚀 Overview
+
+This project is a **2D top-down roguelike dungeon crawler** engineered using modern Java and JavaFX. It demonstrates advanced concepts such as **procedural content generation, adaptive AI systems, and modular game architecture**.
+
+The system is designed not just as a game, but as a **reusable game engine foundation** for future expansions.
+
+---
+
+## 🌟 Key Features
 
 ### 🧊 Procedural World Generation
-*   **Dynamic Maps**: Every floor is uniquely generated with a random room-and-corridor algorithm.
-*   **AI Director**: The game automatically increases map complexity (smaller rooms, tighter mazes) as you descend deeper.
+- Infinite dungeon floors generated using a **room-and-corridor algorithm**
+- Each run delivers a **unique playable layout**
+- Increasing structural complexity with depth (smaller rooms, denser paths)
 
-### ⚔️ Combat & RPG Systems
-*   **Melee Combat**: Strike adjacent enemies with standard attacks (Spacebar).
-*   **Scaling Difficulty**: Enemies gain **+15 HP** and **+3 Damage** each level.
-*   **Permanent Progression**: Your player gains **+10 Max HP** and **+2 Attack Power** on every floor cleared.
-*   **Staircase Recovery**: Discovering the stairs to the next level fully restores your health.
+### 🤖 AI Director System
+- Dynamic difficulty adjustment based on player progression
+- Real-time balancing of:
+  - Enemy strength
+  - Map density
+- Ensures **optimal engagement curve**
 
-### 📊 Real-time HUD
-*   Track your current **HP**, **Attack Power**, and **Enemies Remaining**.
-*   View your current depth in the golden **LEVEL** indicator.
+### ⚔️ Combat & RPG Mechanics
+- Grid-based melee combat system
+- Enemy scaling:
+  - +15 HP / level
+  - +3 Damage / level
+- Player progression:
+  - +10 Max HP / floor
+  - +2 Attack Power / floor
+- Full HP restoration on level transition
+
+### 📊 Real-time HUD System
+- Live tracking of:
+  - Player HP
+  - Attack Power
+  - Remaining enemies
+- Visual depth indicator (LEVEL system)
+
+---
+
+## 🧠 Concepts & Technologies
+
+### 🎮 Core Game Development
+- Game Loop (JavaFX `AnimationTimer`)
+- Real-time rendering pipeline
+- Event-driven input handling
+
+### 🎲 Algorithms & Logic
+- Procedural generation (randomized + constrained)
+- Grid-based collision detection
+- State management (Game Over, Restart, Active Play)
+
+### 🤖 AI & Scaling Systems
+- Adaptive difficulty model (AI Director)
+- Progressive enemy stat scaling
+- Player growth balancing
+
+### 🧩 Software Engineering
+- Object-Oriented Programming (OOP)
+- Modular architecture (separation of concerns)
+- Extensible system design for future features
 
 ---
 
 ## 🛠️ Tech Stack
-*   **Language**: Java 17+ (Optimised for Java 26)
-*   **Framework**: JavaFX (Canvas-based rendering)
-*   **Architecture**: Modular OOP with a central AnimationTimer game loop.
+
+| Layer        | Technology        |
+|--------------|------------------|
+| Language     | Java 17+ (Optimized for Java 26) |
+| Framework    | JavaFX (Canvas Rendering) |
+| Architecture | Modular OOP + Game Loop Pattern |
+
+---
+
+## 📂 Project Structure
+src/
+├── engine/ # Core game loop & state management
+├── entities/ # Player, Enemy, base classes
+├── world/ # Dungeon generation logic
+├── ui/ # HUD and rendering
+├── input/ # Keyboard handling
+└── main/ # Entry point
 
 ---
 
