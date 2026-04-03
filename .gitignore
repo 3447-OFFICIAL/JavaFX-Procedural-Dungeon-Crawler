@@ -1,0 +1,22 @@
+# --- Java ---
+*.class
+out/
+
+# --- IDEs ---
+.idea/
+*.iml
+.vscode/
+.project
+.classpath
+.settings/
+
+# --- Build / SDK ---
+# JavaFX SDK is too large for GitHub (unzip this locally)
+openjfx-26_windows-x64_bin-sdk/
+
+# --- System ---
+.DS_Store
+Thumbs.db
+
+# --- Antigravity ---
+.gemini/
