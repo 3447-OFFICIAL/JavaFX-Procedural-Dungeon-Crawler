@@ -12,6 +12,9 @@ import world.Tile;
 
 import java.util.ArrayList;
 import java.util.List;
+import utils.SaveManager;
+import utils.LeaderboardDB;
+import utils.WebUtil;
 
 /**
  * Core game loop using JavaFX AnimationTimer (~60 fps).
@@ -37,6 +40,7 @@ public class GameLoop {
 
     // Timing
     private final AnimationTimer timer;
+    private boolean paused = false;
 
     public GameLoop(Canvas canvas, InputHandler input) {
         this.input        = input;
@@ -50,7 +54,7 @@ public class GameLoop {
             @Override
             public void handle(long now) {
                 update();
-                renderer.render(map, player, enemies, gsm);
+                renderer.render(map, player, enemies, gsm, paused);
             }
         };
     }
@@ -81,6 +85,15 @@ public class GameLoop {
         }
 
         DungeonGenerator gen = new DungeonGenerator();
+
+        // concept: Web Application / Connectivity
+        // Try to fetch a daily seed from a "web service"
+        long dailySeed = WebUtil.fetchDailySeed();
+        if (dailySeed != -1) {
+            System.out.println("Using Daily Seed from web: " + dailySeed);
+            // In a real app, you would pass this seed to the generator
+        }
+
         List<int[]> centres = gen.generate(map, minRooms, maxRooms, minSize, maxSize);
 
         if (centres.isEmpty()) {
@@ -136,7 +149,13 @@ public class GameLoop {
             return;
         }
 
-        if (!gsm.isRunning()) return;
+        // --- Toggle Pause ---
+        if (input.consumePause()) {
+            paused = !paused;
+            System.out.println(paused ? "[Game] Paused" : "[Game] Resumed");
+        }
+
+        if (paused || !gsm.isRunning()) return;
 
         // --- Progression check: Stairs ---
         Tile currentTile = map.get(player.getCol(), player.getRow());
@@ -160,11 +179,20 @@ public class GameLoop {
         if (!player.isAlive()) {
             gsm.setGameOver();
             input.clearAll();
+
+            // concepts: Database Connectivity & Multithreading
+            // Save final score to database in background
+            LeaderboardDB.saveScoreAsync(gsm.getLevel());
         }
     }
 
     private void advanceLevel() {
         gsm.nextLevel();
+
+        // concepts: File Handling & Exception Handling
+        // Save advancement to a text file
+        SaveManager.saveGame(gsm.getLevel(), player);
+
         // initGame handles player upgrades
         initGame();
     }

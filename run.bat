@@ -12,9 +12,14 @@ SET OUT_DIR=out
 REM ----- Collect source files -----
 SET SRC=^
  src\utils\Constants.java ^
+ src\utils\SaveManager.java ^
+ src\utils\LeaderboardDB.java ^
+ src\utils\WebUtil.java ^
+ src\utils\GameWebServer.java ^
  src\world\Tile.java ^
  src\world\MapGrid.java ^
  src\world\DungeonGenerator.java ^
+ src\entities\Combatant.java ^
  src\entities\Entity.java ^
  src\entities\Player.java ^
  src\entities\Enemy.java ^
@@ -24,7 +29,8 @@ SET SRC=^
  src\engine\GameStateManager.java ^
  src\engine\Renderer.java ^
  src\engine\GameLoop.java ^
- src\main\MainApp.java
+ src\main\MainApp.java ^
+ src\module-info.java
 
 echo =====================================================
 echo  Dungeon Crawler Build ^& Launch
@@ -36,8 +42,8 @@ echo [1/2] Compiling...
 IF NOT EXIST "%OUT_DIR%" mkdir "%OUT_DIR%"
 
 "%JDK_BIN%\javac.exe" ^
-    --module-path "%JAVAFX_LIB%" ^
-    --add-modules javafx.controls,javafx.graphics ^
+    --module-path "%JAVAFX_LIB%;lib" ^
+    --add-modules javafx.controls,javafx.graphics,java.sql,java.net.http,jdk.httpserver ^
     -d "%OUT_DIR%" ^
     %SRC%
 
@@ -54,9 +60,13 @@ echo.
 REM ----- Run -----
 echo [2/2] Launching game...
 "%JDK_BIN%\java.exe" ^
-    --module-path "%JAVAFX_LIB%" ^
-    --add-modules javafx.controls,javafx.graphics ^
+    --module-path "%JAVAFX_LIB%;lib" ^
+    --add-modules javafx.controls,javafx.graphics,java.sql,java.net.http,jdk.httpserver ^
+    --enable-native-access=javafx.graphics ^
     -cp "%OUT_DIR%" ^
     main.MainApp
 
+echo.
+echo Press any key to exit...
+pause
 ENDLOCAL

@@ -25,6 +25,7 @@ public class InputHandler {
     private boolean leftQueued;
     private boolean rightQueued;
     private boolean attackQueued;
+    private boolean pauseQueued;
 
     // ------------------------------------------------------------------ //
     // JavaFX event entry points (wire these to Scene)
@@ -40,6 +41,7 @@ public class InputHandler {
                 case A, LEFT  -> leftQueued  = true;
                 case D, RIGHT -> rightQueued = true;
                 case SPACE    -> attackQueued = true;
+                case P        -> pauseQueued = true;
                 default -> {}
             }
         }
@@ -53,6 +55,14 @@ public class InputHandler {
     // ------------------------------------------------------------------ //
     // Consumed move queries — called by Player.handleMovement()
     // ------------------------------------------------------------------ //
+
+    public boolean consumePause() {
+        if (pauseQueued) {
+            pauseQueued = false;
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Returns true and clears the flag if the given direction was queued.

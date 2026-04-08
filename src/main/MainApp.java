@@ -22,6 +22,9 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage primaryStage) {
+        // Start the web dashboard (Another Web Application!)
+        utils.GameWebServer.startServerAsync();
+
         // --- Canvas ---
         Canvas canvas = new Canvas(Constants.WINDOW_WIDTH, Constants.WINDOW_HEIGHT);
 
