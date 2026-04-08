@@ -2,9 +2,9 @@ package entities;
 
 /**
  * Abstract base class for all game entities (Player, Enemy).
- * Stores grid-position and hit-point state.
+ * Implements Combatant interface to demonstrate Interface usage.
  */
-public abstract class Entity {
+public abstract class Entity implements Combatant {
 
     protected int col;   // grid column
     protected int row;   // grid row

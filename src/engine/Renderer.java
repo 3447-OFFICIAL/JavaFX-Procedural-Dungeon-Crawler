@@ -55,7 +55,7 @@ public class Renderer {
     // ------------------------------------------------------------------ //
 
     public void render(MapGrid map, Player player, List<Enemy> enemies,
-                       GameStateManager gsm) {
+                       GameStateManager gsm, boolean paused) {
         clearCanvas();
         drawMap(map);
         drawEnemies(enemies);
@@ -66,6 +66,8 @@ public class Renderer {
 
         if (gsm.getState() == GameStateManager.State.GAME_OVER) {
             drawGameOverOverlay();
+        } else if (paused) {
+            drawPauseOverlay();
         }
     }
 
@@ -202,7 +204,7 @@ public class Renderer {
         // Controls hint
         gc.setFill(Color.gray(0.5));
         gc.setTextAlign(TextAlignment.CENTER);
-        gc.fillText("WASD/Arrows to Move | Space to Attack | R to Restart", canvas.getWidth() / 2.0, hudY + 50);
+        gc.fillText("WASD/Arrows Move | Space Attack | P Pause | R Restart", canvas.getWidth() / 2.0, hudY + 50);
     }
 
     private void drawGameOverOverlay() {
@@ -225,6 +227,24 @@ public class Renderer {
         gc.setFill(Color.gray(0.6));
         gc.fillText("Press R to restart", canvas.getWidth() / 2.0,
                 canvas.getHeight() / 2.0 + 50);
+
+        // Reset font
+        gc.setFont(Font.font("Monospace", FontWeight.BOLD, 13));
+    }
+
+    private void drawPauseOverlay() {
+        // Semi-transparent dark overlay
+        gc.setFill(Color.rgb(0, 0, 0, 0.50));
+        gc.fillRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        // "PAUSED" Text
+        gc.setFont(Font.font("Monospace", FontWeight.BOLD, 48));
+        gc.setFill(Color.WHITE);
+        gc.setTextAlign(TextAlignment.CENTER);
+        gc.fillText("PAUSED", canvas.getWidth() / 2.0, canvas.getHeight() / 2.0);
+
+        gc.setFont(Font.font("Monospace", FontWeight.NORMAL, 16));
+        gc.fillText("Press P to Resume", canvas.getWidth() / 2.0, canvas.getHeight() / 2.0 + 40);
 
         // Reset font
         gc.setFont(Font.font("Monospace", FontWeight.BOLD, 13));
